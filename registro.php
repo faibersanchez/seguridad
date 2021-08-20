@@ -15,22 +15,22 @@
 				<div class="panel panel-body">
 					<form id="frmRegistro">
 					<label>Nombre</label>
-					<input type="text" class="form-control input-sm" id="nombre" name="">
+					<input type="text" class="form-control input-sm texto" id="nombre" name="">
 
 					<label>Apellido</label>
-					<input type="text" class="form-control input-sm" id="apellido" name="">
+					<input type="text" class="form-control input-sm texto" id="apellido" name="">
 
 					<label>Telefono</label>
 					<input type="number" class="form-control input-sm" id="telefono" name="">
 
 					<label>Direccion</label>
-					<input type="text" class="form-control input-sm" id="direccion" name="">
+					<input type="text" class="form-control input-sm direcciones" id="direccion" name="">
 
 					<label>Email</label>
-					<input type="email" class="form-control input-sm" id="email" name="">
+					<input type="email" class="form-control input-sm fuente" id="email" name="">
 
 					<label>Usuario</label>
-					<input type="text" class="form-control input-sm" id="usuario" name="">
+					<input type="text" class="form-control input-sm usuario" id="usuario" name="">
 
 					<label>Password</label>
 					<input type="password" class="form-control input-sm" id="password" name="">
@@ -57,8 +57,21 @@
 			if($('#nombre').val()==""){
 				alertify.alert("Debes agregar el nombre");
 				return false;
+
 			}else if($('#apellido').val()==""){
 				alertify.alert("Debes agregar el apellido");
+				return false;
+
+			}else if($('#telefono').val()==""){
+				alertify.alert("Debes agregar un numero de telefono");
+				return false;
+
+			}else if($('#direccion').val()==""){
+				alertify.alert("Debes agregar una direccion");
+				return false;
+
+			}else if($('#email').val()==""){
+				alertify.alert("Debes agregar una direccion de correo electronico");
 				return false;
 
 			}else if($('#usuario').val()==""){
@@ -97,5 +110,22 @@
 					});
 		});
 	});
+
+	//Validamos los campos
+	$('.texto').on('input', function () { 
+      this.value = this.value.replace(/[^a-zA-ZÑñ]/g,'');
+    });
+
+	$('.direcciones').on('input', function () { 
+      this.value = this.value.replace(/[^a-zA-ZÑñ0-9- #]/g,'');
+    });
+
+	$('.fuente').on('input', function () { 
+      this.value = this.value.replace(/[^0-9a-zA-ZñÑ.@ _-]/g,'');
+    });
+
+	$('.usuario').on('input', function () { 
+      this.value = this.value.replace(/[^a-zA-ZÑñ0-9]/g,'');
+    });
 </script>
 
