@@ -13,7 +13,7 @@
 			<div class="panel panel-danger">
 				<div class="panel panel-heading">Registro de usuario</div>
 				<div class="panel panel-body">
-					<form id="frmRegistro">
+					<form id="frmRegistro" name="f1">
 					<label>Nombre</label>
 					<input type="text" class="form-control input-sm texto" id="nombre" name="">
 
@@ -32,8 +32,11 @@
 					<label>Usuario</label>
 					<input type="text" class="form-control input-sm usuario" id="usuario" name="">
 
-					<label>Password</label>
+					<label>Contraseña</label>
 					<input type="password" class="form-control input-sm" id="password" name="">
+
+					<label>Repetir contraseña</label>
+					<input type="password" class="form-control input-sm" id="password2" name="">
 
 					<p></p>
 					<span class="btn btn-primary" id="registrarNuevo">Registrar</span>
@@ -53,6 +56,9 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#registrarNuevo').click(function(){
+
+			var p1 = document.getElementById("password").value;
+			var p2 = document.getElementById("password2").value;
 
 			if($('#nombre').val()==""){
 				alertify.alert("Debes agregar el nombre");
@@ -81,6 +87,9 @@
 			}else if($('#password').val()==""){
 				alertify.alert("Debes agregar el password");
 				return false;
+			}else if(p1 != p2){
+				alertify.alert("Las contraseñas deben coincidir");
+				return false;
 			}
 
 			cadena="nombre=" + $('#nombre').val() +
@@ -96,16 +105,15 @@
 						url:"php/registro.php",
 						data:cadena,
 						success:function(r){
-
 							if(r==2){
-								alertify.alert("Este usuario ya existe, prueba con otro :)");
-							}
-							else if(r==1){
+								alertify.alert("Este usuario ya existe, prueba con otro");
+							}else if(r==1){
 								$('#frmRegistro')[0].reset();
 								alertify.success("Agregado con exito");
 							}else{
 								alertify.error("Fallo al agregar");
 							}
+							
 						}
 					});
 		});
@@ -113,7 +121,7 @@
 
 	//Validamos los campos
 	$('.texto').on('input', function () { 
-      this.value = this.value.replace(/[^a-zA-ZÑñ]/g,'');
+      this.value = this.value.replace(/[^a-z A-ZÑñ]/g,'');
     });
 
 	$('.direcciones').on('input', function () { 
