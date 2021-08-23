@@ -24,10 +24,10 @@
 					<input type="number" class="form-control input-sm" id="telefono" name="">
 
 					<label>Direccion</label>
-					<input type="text" class="form-control input-sm direcciones" id="direccion" name="">
+					<input type="text" class="form-control input-sm direcciones" id="direccion" name=""value="prueba" onClick="pruebaemail(email.value);">
 
 					<label>Email</label>
-					<input type="email" class="form-control input-sm fuente" id="email" name="">
+					<input type="email" class="form-control input-sm fuente" id="email" name="" >
 
 					<label>Usuario</label>
 					<input type="text" class="form-control input-sm usuario" id="usuario" name="">
@@ -52,6 +52,15 @@
 </div>
 </body>
 </html>
+
+<script>
+function pruebaemail (valor){
+	re=/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+	if(!re.exec(valor)){
+		alertify.alert('email no valido');
+	}
+	}
+</script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
