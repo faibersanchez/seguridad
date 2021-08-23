@@ -13,7 +13,7 @@
 			<div class="panel panel-danger">
 				<div class="panel panel-heading">Registro de usuario</div>
 				<div class="panel panel-body">
-					<form id="frmRegistro" name="f1">
+					<form id="frmRegistro">
 					<label>Nombre</label>
 					<input type="text" class="form-control input-sm texto" id="nombre" name="">
 
@@ -24,18 +24,18 @@
 					<input type="number" class="form-control input-sm" id="telefono" name="">
 
 					<label>Direccion</label>
-					<input type="text" class="form-control input-sm direcciones" id="direccion" name=""value="prueba" onClick="pruebaemail(email.value);">
+					<input type="text" class="form-control input-sm direcciones" id="direccion" name="">
 
 					<label>Email</label>
-					<input type="email" class="form-control input-sm fuente" id="email" name="" >
+					<input type="email" class="form-control input-sm fuente" id="email" name=""  onClick="pruebaemail(email.value);">
 
 					<label>Usuario</label>
 					<input type="text" class="form-control input-sm usuario" id="usuario" name="">
 
-					<label>Contraseña</label>
+					<label>Password</label>
 					<input type="password" class="form-control input-sm" id="password" name="">
 
-					<label>Repetir contraseña</label>
+					<label> Repite Password</label>
 					<input type="password" class="form-control input-sm" id="password2" name="">
 
 					<p></p>
@@ -52,7 +52,7 @@
 </div>
 </body>
 </html>
-
+	
 <script>
 function pruebaemail (valor){
 	re=/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
@@ -66,8 +66,8 @@ function pruebaemail (valor){
 	$(document).ready(function(){
 		$('#registrarNuevo').click(function(){
 
-			var p1 = document.getElementById("password").value;
-			var p2 = document.getElementById("password2").value;
+			var p1 =document.getElementById("password").value;
+			var p2 =document.getElementById("password2").value;
 
 			if($('#nombre').val()==""){
 				alertify.alert("Debes agregar el nombre");
@@ -97,7 +97,7 @@ function pruebaemail (valor){
 				alertify.alert("Debes agregar el password");
 				return false;
 			}else if(p1 != p2){
-				alertify.alert("Las contraseñas deben coincidir");
+				alertify.alert("la contraseña debe coencidir");
 				return false;
 			}
 
@@ -114,15 +114,16 @@ function pruebaemail (valor){
 						url:"php/registro.php",
 						data:cadena,
 						success:function(r){
+
 							if(r==2){
-								alertify.alert("Este usuario ya existe, prueba con otro");
-							}else if(r==1){
+								alertify.alert("Este usuario ya existe, prueba con otro :)");
+							}
+							else if(r==1){
 								$('#frmRegistro')[0].reset();
 								alertify.success("Agregado con exito");
 							}else{
 								alertify.error("Fallo al agregar");
 							}
-							
 						}
 					});
 		});
@@ -130,7 +131,7 @@ function pruebaemail (valor){
 
 	//Validamos los campos
 	$('.texto').on('input', function () { 
-      this.value = this.value.replace(/[^a-z A-ZÑñ]/g,'');
+      this.value = this.value.replace(/[^a-zA-ZÑñ]/g,'');
     });
 
 	$('.direcciones').on('input', function () { 
@@ -144,5 +145,6 @@ function pruebaemail (valor){
 	$('.usuario').on('input', function () { 
       this.value = this.value.replace(/[^a-zA-ZÑñ0-9]/g,'');
     });
+
 </script>
 
