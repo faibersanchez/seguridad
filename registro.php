@@ -27,7 +27,7 @@
 					<input type="text" class="form-control input-sm direcciones" id="direccion" name="">
 
 					<label>Email</label>
-					<input type="email" class="form-control input-sm fuente" id="email" name=""  onClick="pruebaemail(email.value);">
+					<input type="email" class="form-control input-sm fuente" id="email" name="">
 
 					<label>Usuario</label>
 					<input type="text" class="form-control input-sm usuario" id="usuario" name="">
@@ -39,7 +39,7 @@
 					<input type="password" class="form-control input-sm" id="password2" name="">
 
 					<p></p>
-					<span class="btn btn-primary" id="registrarNuevo">Registrar</span>
+					<span class="btn btn-primary" id="registrarNuevo" onClick="pruebaemail(email.value);">Registrar</span>
 					</form>
 					<div style="text-align: right;">
 						<a href="index.php" class="btn btn-default">Login</a>
@@ -52,15 +52,18 @@
 </div>
 </body>
 </html>
-	
+
 <script>
-function pruebaemail (valor){
-	re=/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
-	if(!re.exec(valor)){
-		alertify.alert('email no valido');
-	}
-	}
+	function pruebaemail (valor){
+					re=/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+					if(!re.exec(valor)){
+						alert('email no valido');
+					}
+					else alert('email valido');
+				}
+
 </script>
+	
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -100,6 +103,7 @@ function pruebaemail (valor){
 				alertify.alert("la contraseña debe coencidir");
 				return false;
 			}
+
 
 			cadena="nombre=" + $('#nombre').val() +
 					"&apellido=" + $('#apellido').val() +
@@ -147,4 +151,3 @@ function pruebaemail (valor){
     });
 
 </script>
-
