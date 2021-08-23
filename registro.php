@@ -27,7 +27,7 @@
 					<input type="text" class="form-control input-sm direcciones" id="direccion" name="">
 
 					<label>Email</label>
-					<input type="email" class="form-control input-sm fuente" id="email" name=""  onClick="pruebaemail(email.value);">
+					<input type="email" class="form-control input-sm fuente" id="email" name="">
 
 					<label>Usuario</label>
 					<input type="text" class="form-control input-sm usuario" id="usuario" name="">
@@ -53,14 +53,6 @@
 </body>
 </html>
 	
-<script>
-function pruebaemail (valor){
-	re=/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
-	if(!re.exec(valor)){
-		alertify.alert('email no valido');
-	}
-	}
-</script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -97,9 +89,10 @@ function pruebaemail (valor){
 				alertify.alert("Debes agregar el password");
 				return false;
 			}else if(p1 != p2){
-				alertify.alert("la contraseña debe coencidir");
+				alertify.alert("¡Ups! La contraseña debe coincidir");
 				return false;
 			}
+
 
 			cadena="nombre=" + $('#nombre').val() +
 					"&apellido=" + $('#apellido').val() +
@@ -147,4 +140,3 @@ function pruebaemail (valor){
     });
 
 </script>
-
