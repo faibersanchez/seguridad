@@ -39,7 +39,7 @@
 					<input type="password" class="form-control input-sm" id="password2" name="">
 
 					<p></p>
-					<span class="btn btn-primary" id="registrarNuevo" onClick="pruebaemail(email.value);">Registrar</span>
+					<span class="btn btn-primary" id="registrarNuevo">Registrar</span>
 					</form>
 					<div style="text-align: right;">
 						<a href="index.php" class="btn btn-default">Login</a>
@@ -52,21 +52,7 @@
 </div>
 </body>
 </html>
-<<<<<<< HEAD
-=======
 
-<script>
-	function pruebaemail (valor){
-					re=/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
-					if(!re.exec(valor)){
-						alert('email no valido');
-					}
-					else alert('email valido');
-				}
-
-</script>
->>>>>>> bc861cb2d1cef10aafe90e032b1ef93ebea82870
-	
 
 <script type="text/javascript">
 	$(document).ready(function(){
