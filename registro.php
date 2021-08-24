@@ -124,7 +124,7 @@
 
 	//Validamos los campos
 	$('.texto').on('input', function () { 
-      this.value = this.value.replace(/[^a-zA-ZÑñ]/g,'');
+      this.value = this.value.replace(/[^a-z A-ZÑñ]/g,'');
     });
 
 	$('.direcciones').on('input', function () { 
